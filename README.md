@@ -16,6 +16,10 @@ Sovelluksen ominaisuuksia tulee olemaan:
 
 ● Käyttäjä voi poistaa lisäämänsä marja- tai sienipaikan.
 
+(● Käyttäjä voi osallistua kyselyyn,joka löytää muotonsa hieman myöhemmin)
+
+(● Käyttäjä voi katsella kyselyn tuloksista koottua tulossivua)
+
 ● Ylläpitäjä voi lisätä ja poistaa marja- ja sienipaikkoja.
 
 ● Ylläpitäjä voi tarvittaessa poistaa käyttäjän antaman arvion.
