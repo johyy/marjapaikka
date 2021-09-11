@@ -16,6 +16,10 @@ Sovelluksen ominaisuuksia tulee olemaan:
 
 ● Käyttäjä voi poistaa lisäämänsä marja- tai sienipaikan.
 
+● Ylläpitäjä voi lisätä ja poistaa marja- ja sienipaikkoja.
+
+● Ylläpitäjä voi tarvittaessa poistaa käyttäjän antaman arvion.
+
 ● Jokaisen marja- tai sienipaikan lisäykseen on mahdollista lisätä seuraavat tiedot:
   1. Kaupunginosa, josta paikka löytyy.
   2. Marjan tai sienen nimi, jota paikasta löytyy. Mahdollista lisätä myös useita marjoja tai sieniä tai sekaisin sekä marjoja että sieniä.
