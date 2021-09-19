@@ -30,4 +30,5 @@ Sovelluksen ominaisuuksia tulee olemaan:
   3. Paikan löytämiseen tarvittavat tiedot tai mahdolliset koordinaatit.
   4. Automaattisesti lisätään käyttäjätunnus sekä päivämäärä, jolloin lisäys on tehty.
 
-Sovellus tulee testattaksi Herokuun.
+Sovellus testattavissa 
+<a href="http://marjapaikka.herokuapp.com">Herokussa</a>.
