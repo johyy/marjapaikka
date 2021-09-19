@@ -1,0 +1,25 @@
+
+body {
+    margin: auto;
+    max-width: 45em;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    background-color: #FFDDDD;
+}
+
+table {
+    width: 80%;
+}
+
+td, th {
+    border-style: solid;
+    border-color: black;
+    border-width: 1px;
+}
+
+header {
+    background-color: #FFDDDD;
+    position: sticky;
+    top: 0;
+    
+    z-index: 9999;
+}	
