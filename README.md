@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# marjapaikka
-=======
 # Marjapaikka
 
 Sovelluksen avulla voi löytää Helsingin parhaat marja- ja sienipaikat.
@@ -35,4 +32,3 @@ Sovelluksen ominaisuuksia tulee olemaan:
 
 Sovellus testattavissa 
 <a href="http://marjapaikka.herokuapp.com">Herokussa</a>.
->>>>>>> 2c924222c5272d705a3b81e0cca375071f521d8c
