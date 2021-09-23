@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+<form action="/send" method="post">
+Kaupunginosa: <br>
+<textarea name="borough" rows="1" cols="40"></textarea>
+<br>
+Laji: <br>
+<textarea name="genre" rows="1" cols="40"></textarea>
+<br>
+Löytöpaikka tarkemmin: <br>
+<textarea name="coordinates" rows="5" cols="40"></textarea>
+<br>
+<input type="submit" value="Lähetä">
+</form>
+
+{% endblock %}
