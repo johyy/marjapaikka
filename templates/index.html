@@ -1,13 +1,31 @@
 {% extends "layout.html" %}
 {% block content %}
-
-
-<h2>Etusivu</h2>
-
 {% if session.user_id %}
+<p>
 <b>{{ session.user_name }}</b>. <a href="/logout">Kirjaudu ulos</a>
+<p>
+<a href="/new">Lisää uusi marja- tai sienihavainto!</a>
 {% else %}
 Et ole kirjautunut sisään. <a href="/login">Kirjaudu sisään</a>
 {% endif %}
 
+
+<h2>Etusivu</h2>
+
+{% for addition in additions %}
+<b>Kaupunginosa:</b> {{ addition[0] }}
+<p>
+<b>Laji:</b> {{ addition[1] }}
+<p>
+<b>Löytöpaikka tarkemmin:</b> {{ addition[2] }}
+<p>
+<b>Lähettäjä:</b> {{ addition[3] }}
+<p>
+<b>Aika:</b> {{ addition[4].strftime("%Y-%m-%d %H:%M") }}
+{% if session.user_id %}
+<p>
+<a href="/review"> Arvostele paikka </a>
+{% endif %}
+<hr>
+{% endfor %}
 {% endblock %}
