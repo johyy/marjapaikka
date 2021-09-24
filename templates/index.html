@@ -10,7 +10,7 @@ Et ole kirjautunut sisään. <a href="/login">Kirjaudu sisään</a>
 {% endif %}
 
 
-<h2>Etusivu</h2>
+<h2>Uusimmat lisäykset</h2>
 
 {% for addition in additions %}
 <b>Kaupunginosa:</b> {{ addition[0] }}
@@ -24,7 +24,7 @@ Et ole kirjautunut sisään. <a href="/login">Kirjaudu sisään</a>
 <b>Aika:</b> {{ addition[4].strftime("%Y-%m-%d %H:%M") }}
 {% if session.user_id %}
 <p>
-<a href="/review"> Arvostele paikka </a>
+<a href="/review/{{ addition.id }}"> Arvostelut </a>
 {% endif %}
 <hr>
 {% endfor %}

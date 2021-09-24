@@ -1,6 +1,6 @@
 from app import app
 from flask import render_template, request, redirect
-import users, additions
+import users, additions, reviews
 
 @app.route("/")
 def index():
@@ -20,7 +20,33 @@ def send():
 		return redirect("/")
 	else:
 		return render_template("error.html", message="Lisäys ei onnistunut")	
-	
+		
+@app.route("/show_review/<int:addition_id>")
+def show_review(addition_id):
+	reviews = reviews.get_reviews(addition_id)
+
+	return render_template("review.html")
+
+@app.route("/review", methods=["post"])
+def review():
+    users.check_csrf()
+
+    addition_id = request.form["addition_id"]
+
+    stars = int(request.form["stars"])
+    if stars < 1 or stars > 5:
+        return render_template("error.html", message="Virheellinen tähtimäärä")
+
+    comment = request.form["comment"]
+    if len(comment) > 1000:
+        return render_template("error.html", message="Kommentti on liian pitkä")
+    if comment == "":
+        comment = "-"
+
+    addition.add_review(addition_id, users.user_id(), stars, comment)
+
+    return redirect("/show_review/"+str(deck_id))
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
 	if request.method == "GET":

@@ -4,7 +4,7 @@ from flask import abort, request, session
 import users
 
 def get_list():
-	sql = "SELECT A.borough, A.genre, A.coordinates, U.username, A.sent_at FROM additions A, users U WHERE A.user_id=U.id ORDER BY A.sent_at" 
+	sql = "SELECT A.borough, A.genre, A.coordinates, U.username, A.sent_at FROM additions A, users U WHERE A.user_id=U.id ORDER BY A.sent_at DESC" 
 	result = db.session.execute(sql)
 	return result.fetchall()
 
