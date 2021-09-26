@@ -1,16 +1,25 @@
 {% extends "layout.html" %}
 {% block content %}
+
 {% if session.user_id %}
 <p>
 <b>{{ session.user_name }}</b>. <a href="/logout">Kirjaudu ulos</a>
 <p>
-<a href="/new">Lisää uusi marja- tai sienihavainto!</a>
+<ul>
+<li><a href="/new">Lisää uusi marja- tai sienihavainto!</a>
+<li><a href="/remove_addition">Poista lisäyksesi</a>
+</ul>
+{% if session.user_role == 1 %}
+<h3>Adiminin toiminnot:</h3>
+<ul>
+<li><a href="/remove">Poista lisäys</a>
+</ul>
+{% endif %}
 {% else %}
 Et ole kirjautunut sisään. <a href="/login">Kirjaudu sisään</a>
 {% endif %}
 
-
-<h2>Uusimmat lisäykset</h2>
+<h2>Käyttäjien lisäykset:</h2>
 
 {% for addition in additions %}
 <b>Kaupunginosa:</b> {{ addition[0] }}
@@ -19,13 +28,11 @@ Et ole kirjautunut sisään. <a href="/login">Kirjaudu sisään</a>
 <p>
 <b>Löytöpaikka tarkemmin:</b> {{ addition[2] }}
 <p>
-<b>Lähettäjä:</b> {{ addition[3] }}
+<b>Lisännyt:</b> {{ addition[3] }}
 <p>
 <b>Aika:</b> {{ addition[4].strftime("%Y-%m-%d %H:%M") }}
-{% if session.user_id %}
-<p>
-<a href="/review/{{ addition.id }}"> Arvostelut </a>
-{% endif %}
+<p> 
+<a href="/show_review/{{ addition[5] }}"> Arvostelut </a>
 <hr>
 {% endfor %}
 {% endblock %}

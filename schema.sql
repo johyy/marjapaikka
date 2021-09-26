@@ -1,7 +1,7 @@
 CREATE TABLE users (
 	id SERIAL PRIMARY KEY,
 	username TEXT UNIQUE,
-	password TEXT
+	password TEXT,
 	role INTEGER
 );
 	
@@ -10,8 +10,9 @@ CREATE TABLE additions (
 	borough TEXT,
 	genre TEXT,
 	coordinates TEXT,
-	user_id INTEGER REFERENCES users,
-	sent_at TIMESTAMP
+	creator_id INTEGER REFERENCES users,
+	sent_at TIMESTAMP,
+	visible INTEGER
 );
 
 CREATE TABLE reviews (

@@ -23,14 +23,14 @@ def send():
 		
 @app.route("/show_review/<int:addition_id>")
 def show_review(addition_id):
-	reviews = reviews.get_reviews(addition_id)
+	print(addition_id)
+	info = additions.get_addition_info(addition_id)	
+	reviews = additions.get_reviews(addition_id)
 
-	return render_template("review.html")
+	return render_template("review.html", id=addition_id, borough=info[0], genre=info[1], creator=info[2], reviews=reviews)
 
 @app.route("/review", methods=["post"])
 def review():
-    users.check_csrf()
-
     addition_id = request.form["addition_id"]
 
     stars = int(request.form["stars"])
@@ -43,9 +43,9 @@ def review():
     if comment == "":
         comment = "-"
 
-    addition.add_review(addition_id, users.user_id(), stars, comment)
+    addition.add_review(addition_id, stars, comment, users.user_id())
 
-    return redirect("/show_review/"+str(deck_id))
+    return redirect("/show_review/"+str(addition_id))
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -82,5 +82,34 @@ def register():
 		return redirect ("/")
 
 
+@app.route("/remove", methods=["get", "post"])
+def remove():
+	users.require_role(1)
 	
-		
+	if request.method == "GET":
+		all_additions = additions.get_list()
+		return render_template("remove_addition.html", list=all_additions)
+	
+	if request.method == "POST":
+		users.check_csrf()
+		if "addition" in request.form:
+            		addition = request.form["addition"]
+            		additions.remove_addition_admin(addition, users.user_id())
+            		
+	return redirect("/")
+
+@app.route("/remove_addition", methods=["get", "post"])
+def remove_addition():
+
+    if request.method == "GET":
+        my_additions = additions.get_my_additions(users.user_id())
+        return render_template("remove_addition.html", list=my_additions)
+
+    if request.method == "POST":
+        users.check_csrf()
+
+        if "addition" in request.form:
+            addition = request.form["addition"]
+            additions.remove_addition(addition, users.user_id())
+
+        return redirect("/")	

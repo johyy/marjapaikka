@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h2>Poista lisäys</h2>
+
+<form action="/remove_addition" method="post">
+
+<p>Minkä lisäyksen haluat poistaa?</p>
+
+{% for addition in list %}
+
+<input type="radio" name="addition" value="{{ addition.id }}"> {{ addition.genre }}  ({{ addition.borough }}) <br>
+
+{% endfor %}
+
+<p>
+
+<input type="submit" value="Poista">
+
+<input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+
+</form>
+
+<p>
+<a href="/">Palaa takaisin</a>
+
+{% endblock %}
