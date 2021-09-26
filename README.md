@@ -32,3 +32,23 @@ Sovelluksen ominaisuuksia tulee olemaan:
 
 Sovellus testattavissa 
 <a href="http://marjapaikka.herokuapp.com">Herokussa</a>.
+
+Tilanne 26.9.:
+
+● Käyttäjä voi kirjautua sisään ja ulos sekä luoda uuden tunnuksen.
+
+● Käyttäjä voi itse lisätä listaukseen löytämänsä marja- tai sienipaikan.
+
+● Käyttäjä näkee listauksena muiden käyttäjien lisäämät marja- ja sienipaikat, joista uusin lisäys on listalla ensimmäisenä.
+
+● Käyttäjä voi poistaa lisäämänsä marja- tai sienipaikan.
+
+● Käyttäjä voi lukea muiden antamia arvosteluja.
+
+● Ylläpitäjä voi poistaa lisäämänsä marja- tai sienipaikan.
+
+● Jokaisen marja- tai sienipaikan lisäykseen on mahdollista lisätä seuraavat tiedot:
+  1. Kaupunginosa, josta paikka löytyy.
+  2. Marjan tai sienen nimi, jota paikasta löytyy.
+  3. Paikan löytämiseen tarvittavat tiedot tai mahdolliset koordinaatit.
+  4. Automaattisesti lisätään käyttäjätunnus sekä päivämäärä, jolloin lisäys on tehty.
