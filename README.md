@@ -45,7 +45,7 @@ Tilanne 26.9.:
 
 ● Käyttäjä voi lukea muiden antamia arvosteluja.
 
-● Ylläpitäjä voi poistaa lisäämänsä marja- tai sienipaikan.
+● Ylläpitäjä voi poistaa lisäämänsä marja- tai sienipaikan. (Ylläpitäjän tunnus: admin, salasana: 123)
 
 ● Jokaisen marja- tai sienipaikan lisäykseen on mahdollista lisätä seuraavat tiedot:
   1. Kaupunginosa, josta paikka löytyy.
