@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h2>Poista arvostelu</h2>
+
+<form action="/remove_review" method="post">
+
+<p>Minkä arvostelun haluat poistaa?</p>
+
+{% for review in list %}
+
+<input type="radio" name="review" value="{{ review.id }}"> {{ review.stars }}  ({{ review.comment }}) <br>
+
+{% endfor %}
+
+<p>
+
+<input type="submit" value="Poista">
+
+<input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+
+</form>
+
+<p>
+<a href="/">Palaa takaisin</a>
+
+{% endblock %}

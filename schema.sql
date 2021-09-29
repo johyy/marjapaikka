@@ -21,5 +21,5 @@ CREATE TABLE reviews (
 	stars INTEGER,
 	comment TEXT,
 	user_id INTEGER REFERENCES users,
-	sent_at TIMESTAMP
+	visible INTEGER
 );	

@@ -3,18 +3,25 @@
 
 <h2>Arvostelu paikalle {{ borough }} ({{ creator }})</h2>
 
+{% if session.user_role == 1 %}
+<h3>Adiminin toiminnot:</h3>
+<ul>
+<li><a href="/remove_review">Poista arvostelu</a>
+</ul>
+{% endif %}
+
 {% if reviews %}
-<h3>Arviot</h3>
+<h3>Käyttäjien antamat arviot:</h3>
 {% endif %}
 
 <ul>
 {% for entry in reviews %}
-<li> {{ entry[0] }} ({{ entry[1] }}/5): "{{ entry[2] }}"
+<li> {{ entry[0] }} ({{ (entry[1]*"★") }}): "{{ entry[2] }}"
 {% endfor %}
 </ul>
 
 {% if session.user_id %}
-<h3>Arvioi paikka</h3>
+<h3>Arvioi paikka:</h3>
 <form action="/review" method="post">
 Tähdet:
 <select name="stars">
@@ -28,7 +35,7 @@ Tähdet:
 Kommentti:<br>
 <textarea name="comment" rows="3" cols="40" maxlength="1000"></textarea>
 <p><input type="submit" value="Lähetä">
-<input type="hidden" name="deck_id" value="{{ id }}">
+<input type="hidden" name="addition_id" value="{{ id }}">
 <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
 </form>
 {% endif %}
