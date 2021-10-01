@@ -28,13 +28,13 @@ def for_sale():
 def new_sale():
     return render_template("new_sale.html")
 
-@app.route("/send_sale_ad", methods=["POST"])
+@app.route("/send_sales_ad", methods=["POST"])
 def send_sales_ad():
     comment = request.form["comment"]
     borough = request.form["borough"]
     if comment == "" or borough == "":
         return render_template("new_sale.html")
-    if sales.send_sale_ad(comment, borough):
+    if sales.send_sales_ad(comment, borough):
         return redirect("/for_sale")
     return render_template("error.html", message="Lisäys ei onnistunut")
 

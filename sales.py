@@ -7,7 +7,7 @@ def get_sales():
     result = db.session.execute(sql)
     return result.fetchall()
     
-def send_sale_ad(comment, borough):
+def send_sales_ad(comment, borough):
     creator_id = users.user_id()
     if creator_id == 0:
         return False
