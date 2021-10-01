@@ -1,5 +1,6 @@
 from db import db
-import users, reviews
+import users 
+import reviews
 
 def get_list():
     sql = """SELECT A.borough, A.genre, A.coordinates, U.username, A.sent_at, A.id FROM
@@ -30,6 +31,11 @@ def get_my_additions(user_id):
 def remove_addition(addition_id, user_id):
     sql = "UPDATE additions SET visible=0 WHERE id=:id AND creator_id=:user_id"
     db.session.execute(sql, {"id":addition_id, "user_id":user_id})
+    db.session.commit()
+
+def remove_addition_admin(addition_id):
+    sql = "UPDATE additions SET visible=0 WHERE id=:id"
+    db.session.execute(sql, {"id":addition_id})
     db.session.commit()
 
 def add_review(addition_id, stars, comment, user_id,):

@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block content %}
+<h3>Kerro tuotteesta, jonka haluaisit ostaa. Älä unohda yhteystietoja!</h3>
+<form action="/send_purchases_ad" method="post">
+Ilmoitus: <br>
+<textarea name="comment" rows="1" cols="40"></textarea>
+<br>
+Kaupunginosa: <br>
+<textarea name="borough" rows="1" cols="40"></textarea>
+<br>
+<input type="submit" value="Lähetä">
+</form>
+
+{% endblock %}

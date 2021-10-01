@@ -21,5 +21,24 @@ CREATE TABLE reviews (
 	stars INTEGER,
 	comment TEXT,
 	user_id INTEGER REFERENCES users,
+	visible INTEGER,
+	sent_at TIMESTAMP
+);
+
+CREATE TABLE sales (
+	id SERIAL PRIMARY KEY,
+	user_id INTEGER REFERENCES users,
+	borough TEXT,
+	comment TEXT,
+	sent_at TIMESTAMP,
 	visible INTEGER
-);	
+);
+
+CREATE TABLE purchases (
+	id SERIAL PRIMARY KEY,
+	user_id INTEGER REFERENCES users,
+	borough TEXT,
+	comment TEXT,
+	sent_at TIMESTAMP,
+	visible INTEGER
+);

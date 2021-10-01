@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block content %}
+{% if session.user_id %}
+<p>
+<b>{{ session.user_name }}</b>. <a href="/logout">Kirjaudu ulos</a>
+<p>
+<ul>
+<li><a href="/new_purchase">Lisää ostoilmoitus</a>
+<li><a href="/remove_addition">Poista ilmoituksesi</a>
+</ul>
+{% if session.user_role == 1 %}
+<h3>Adiminin toiminnot:</h3>
+<ul>
+<li><a href="/remove">Poista ilmoitus</a>
+</ul>
+{% endif %}
+{% else %}
+Et ole kirjautunut sisään. <a href="/login">Kirjaudu sisään</a>
+{% endif %}
+<p>
+<h2>Ostetaan:</h2>
+{% for purchase in purchases %}
+<b>Ilmoitus:</b> {{ purchase[0] }}
+<p>
+<b>Kaupunginosa:</b> {{ purchase[1] }}
+<p>
+<b>Lisännyt:</b> {{ purchase[2] }}
+<p>
+<b>Aika:</b> {{ purchase[3].strftime("%Y-%m-%d %H:%M") }}
+<p> 
+<hr>
+{% endfor %}
+<a href="/fleamarket">Palaa takaisin</a>
+<p>
+<a href="/">Etusivu</a>
+
+{% endblock %}

@@ -3,6 +3,8 @@ from app import app
 import users
 import additions
 import reviews
+import sales
+import purchases
 
 @app.route("/")
 def index():
@@ -12,6 +14,48 @@ def index():
 @app.route("/new")
 def new():
     return render_template("new.html")
+
+@app.route("/fleamarket")
+def fleamarket():
+    return render_template("fleamarket.html")
+
+@app.route("/for_sale")
+def for_sale():
+    list = sales.get_sales()
+    return render_template("sales.html", sales=list)
+    
+@app.route("/new_sale")
+def new_sale():
+    return render_template("new_sale.html")
+
+@app.route("/send_sale_ad", methods=["POST"])
+def send_sales_ad():
+    comment = request.form["comment"]
+    borough = request.form["borough"]
+    if comment == "" or borough == "":
+        return render_template("new_sale.html")
+    if sales.send_sale_ad(comment, borough):
+        return redirect("/for_sale")
+    return render_template("error.html", message="Lisäys ei onnistunut")
+
+@app.route("/for_purchase")
+def for_purchase():
+    list = purchases.get_purchases()
+    return render_template("purchases.html", purchases=list)
+    
+@app.route("/new_purchase")
+def new_purchase():
+    return render_template("new_purchase.html")
+
+@app.route("/send_purchases_ad", methods=["POST"])
+def send_purchases_ad():
+    comment = request.form["comment"]
+    borough = request.form["borough"]
+    if comment == "" or borough == "":
+        return render_template("new_purchase.html")
+    if purchases.send_ad(comment, borough):
+        return redirect("/for_purchase")
+    return render_template("error.html", message="Lisäys ei onnistunut")
 
 @app.route("/send", methods=["POST"])
 def send():
@@ -95,8 +139,8 @@ def remove():
     if request.method == "POST":
         users.check_csrf()
         if "addition" in request.form:
-            addition = request.form["addition"]
-            additions.remove_addition(addition, users.user_id())
+            addition_admin = request.form["addition"]
+            additions.remove_addition_admin(addition_admin)
 
     return redirect("/")
 
