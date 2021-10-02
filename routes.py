@@ -38,6 +38,20 @@ def send_sales_ad():
         return redirect("/for_sale")
     return render_template("error.html", message="Lisäys ei onnistunut")
 
+@app.route("/remove_sale", methods=["get", "post"])
+def remove_sale():
+    if request.method == "GET":
+        my_sales = sales.get_my_sales(users.user_id())
+        return render_template("remove_sale.html", list=my_sales)
+
+    if request.method == "POST":
+        users.check_csrf()
+
+    if "sale" in request.form:
+        sale = request.form["sale"]
+        sales.remove_sale(sale, users.user_id())
+    return redirect("/for_sale")
+
 @app.route("/for_purchase")
 def for_purchase():
     list = purchases.get_purchases()
@@ -57,6 +71,20 @@ def send_purchases_ad():
         return redirect("/for_purchase")
     return render_template("error.html", message="Lisäys ei onnistunut")
 
+@app.route("/remove_purchase", methods=["get", "post"])
+def remove_purchase():
+    if request.method == "GET":
+        my_purchases = purchases.get_my_purchases(users.user_id())
+        return render_template("remove_purchase.html", list=my_purchases)
+
+    if request.method == "POST":
+        users.check_csrf()
+
+    if "purchase" in request.form:
+        purchase = request.form["purchase"]
+        purchases.remove_purchase(purchase, users.user_id())
+    return redirect("/for_purchase")
+
 @app.route("/send", methods=["POST"])
 def send():
     borough = request.form["borough"]
@@ -70,11 +98,10 @@ def send():
 
 @app.route("/show_review/<int:addition_id>")
 def show_review(addition_id):
-    print(addition_id)
     info = additions.get_addition_info(addition_id)
-    reviews = additions.get_reviews(addition_id)
+    reviewslist = reviews.get_reviews(addition_id)
 
-    return render_template("review.html", id=addition_id, borough=info[0], genre=info[1], creator=info[2], reviews=reviews)
+    return render_template("review.html", id=addition_id, borough=info[0], genre=info[1], creator=info[2], reviews=reviewslist)
 
 @app.route("/review", methods=["post"])
 def review():
@@ -90,7 +117,7 @@ def review():
     if comment == "":
         comment = "-"
 
-    additions.add_review(addition_id, stars, comment, users.user_id())
+    reviews.add_review(addition_id, stars, comment, users.user_id())
 
     return redirect("/show_review/"+str(addition_id))
 

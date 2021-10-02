@@ -37,14 +37,3 @@ def remove_addition_admin(addition_id):
     sql = "UPDATE additions SET visible=0 WHERE id=:id"
     db.session.execute(sql, {"id":addition_id})
     db.session.commit()
-
-def add_review(addition_id, stars, comment, user_id,):
-    sql = """INSERT INTO reviews (addition_id, stars, comment, user_id) VALUES
-    (:addition_id, :stars, :comment, :user_id)"""
-    db.session.execute(sql, {"addition_id":addition_id, "stars":stars, "comment":comment, "user_id":user_id})
-    db.session.commit()
-
-def get_reviews(addition_id):
-    sql = """SELECT u.username, r.stars, r.comment FROM reviews r, users u
-    WHERE r.user_id=u.id AND r.addition_id=:addition_id ORDER BY r.id"""
-    return db.session.execute(sql, {"addition_id": addition_id}).fetchall()

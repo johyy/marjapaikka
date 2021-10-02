@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h2>Poista myynti-ilmoitus</h2>
+
+<form action="/remove_sale" method="post">
+
+<p>Minkä ilmoituksen haluat poistaa?</p>
+
+{% for sale in list %}
+
+<input type="radio" name="sale" value="{{ sale.id }}"> {{ sale.comment }} <br>
+
+{% endfor %}
+
+<p>
+
+<input type="submit" value="Poista">
+
+<input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+
+</form>
+
+<p>
+<a href="/for_sale">Palaa takaisin</a>
+
+{% endblock %}

@@ -16,3 +16,18 @@ def send_sales_ad(comment, borough):
     db.session.execute(sql, {"comment":comment, "borough":borough, "creator_id":creator_id})
     db.session.commit()
     return True
+
+def get_my_sales(user_id):
+    sql = """SELECT id, comment, borough FROM sales WHERE
+    user_id=:user_id AND visible=1 ORDER BY id"""
+    return db.session.execute(sql, {"user_id":user_id}).fetchall()
+
+def remove_sale(sale_id, user_id):
+    sql = "UPDATE sales SET visible=0 WHERE id=:id AND user_id=:user_id"
+    db.session.execute(sql, {"id":sale_id, "user_id":user_id})
+    db.session.commit()
+
+def remove_sale_admin(addition_id):
+    sql = "UPDATE sales SET visible=0 WHERE id=:id"
+    db.session.execute(sql, {"id":sale_id})
+    db.session.commit()

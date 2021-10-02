@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<h2>Poista ostoilmoitus</h2>
+
+<form action="/remove_purchase" method="post">
+
+<p>Minkä ilmoituksen haluat poistaa?</p>
+
+{% for purchase in list %}
+
+<input type="radio" name="purchase" value="{{ purchase.id }}"> {{ purchase.comment }} <br>
+
+{% endfor %}
+
+<p>
+
+<input type="submit" value="Poista">
+
+<input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+
+</form>
+
+<p>
+<a href="/for_purchase">Palaa takaisin</a>
+
+{% endblock %}
