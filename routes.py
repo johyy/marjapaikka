@@ -1,5 +1,6 @@
 from flask import render_template, request, redirect
 from app import app
+from db import db
 import users
 import additions
 import reviews
@@ -200,3 +201,10 @@ def remove_review():
             reviews.remove_review(id)
             
     return redirect("/")
+    
+@app.route("/result")
+def result():
+    query = request.args["query"]
+    results = additions.get_result(query)
+    return render_template("result.html", list=results)
+

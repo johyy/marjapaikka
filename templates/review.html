@@ -16,7 +16,7 @@
 
 <ul>
 {% for entry in reviews %}
-<li>{{ entry[3].strftime("%d.%m.%Y") }}: "{{ entry[2] }}"({{ (entry[1]*"★") }}) -{{ entry[0] }} 
+<li>{{ entry[3].strftime("%d.%m.%Y") }}: "{{ entry[2] }}" ({{ (entry[1]*"★") }}) -{{ entry[0] }} 
 {% endfor %}
 </ul>
 

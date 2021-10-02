@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Hakusi tulokset: </h2>
+{% for result in list %}
+<b>Kaupunginosa:</b> {{ result[0] }}
+<p>
+<b>Laji:</b> {{ result[1] }}
+<p>
+<b>Löytöpaikka tarkemmin:</b> {{ result[2] }}
+<p>
+<b>Lisännyt:</b> {{ result[3] }}
+<p>
+<b>Päivämäärä:</b> {{ result[4].strftime("%d.%m.%Y") }}
+<p> 
+<a href="/show_review/{{ result[5] }}"> Arvostelut </a>
+<hr>
+<a href="/">Palaa takaisin</a>
+<p>
+{% endfor %}
+{% endblock %}
+

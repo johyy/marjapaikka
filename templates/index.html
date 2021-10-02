@@ -8,6 +8,12 @@
 <ul>
 <li><a href="/new">Lisää uusi marja- tai sienihavainto!</a>
 <li><a href="/remove_addition">Poista lisäyksesi</a>
+<form action="/result" method="GET">
+Hakusana: <input type="text" name="query">
+<br>
+<input type="submit" value="Lähetä">
+</form>
+
 </ul>
 {% if session.user_role == 1 %}
 <h3>Adiminin toiminnot:</h3>
