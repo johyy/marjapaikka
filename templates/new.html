@@ -1,5 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
+{% if session.user_id %}
+
 <h3>Täytä jokainen kohta!</h3>
 <form action="/send" method="post">
 Kaupunginosa: <br>
@@ -13,5 +15,7 @@ Löytöpaikka tarkemmin: <br>
 <br>
 <input type="submit" value="Lähetä">
 </form>
-
+{% else %}
+Et ole kirjautunut sisään. <a href="/login">Kirjaudu sisään</a>
+{% endif %}
 {% endblock %}

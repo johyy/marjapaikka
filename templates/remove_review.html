@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
+{% if session.user_id %}
 
 <h2>Poista arvostelu</h2>
 
@@ -23,5 +24,7 @@
 
 <p>
 <a href="/">Palaa takaisin</a>
-
+{% else %}
+Et ole kirjautunut sisään. <a href="/login">Kirjaudu sisään</a>
+{% endif %}
 {% endblock %}

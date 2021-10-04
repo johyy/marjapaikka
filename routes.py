@@ -202,9 +202,20 @@ def remove_review():
             
     return redirect("/")
     
-@app.route("/result")
-def result():
+@app.route("/result_genre")
+def result_genre():
     query = request.args["query"]
-    results = additions.get_result(query)
+    results = additions.get_result_genre(query)
     return render_template("result.html", list=results)
 
+@app.route("/result_borough")
+def result_borough():
+    query = request.args["query"]
+    results = additions.get_result_borough(query)
+    return render_template("result.html", list=results)
+
+@app.route("/result_user")
+def result_user():
+    query = request.args["query"]
+    results = additions.get_result_user(query)
+    return render_template("result.html", list=results)

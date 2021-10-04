@@ -14,9 +14,6 @@
 <li><a href="/remove">Poista ilmoitus</a>
 </ul>
 {% endif %}
-{% else %}
-Et ole kirjautunut sisään. <a href="/login">Kirjaudu sisään</a>
-{% endif %}
 <p>
 <h2>Myydään:</h2>
 {% for sale in sales %}
@@ -33,5 +30,7 @@ Et ole kirjautunut sisään. <a href="/login">Kirjaudu sisään</a>
 <a href="/fleamarket">Palaa takaisin</a>
 <p>
 <a href="/">Etusivu</a>
-
+{% else %}
+Et ole kirjautunut sisään. <a href="/login">Kirjaudu sisään</a>
+{% endif %}
 {% endblock %}

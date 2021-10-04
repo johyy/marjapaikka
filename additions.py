@@ -38,8 +38,21 @@ def remove_addition_admin(addition_id):
     db.session.execute(sql, {"id":addition_id})
     db.session.commit()
 
-def get_result(query):
+def get_result_genre(query):
     sql = """SELECT A.borough, A.genre, A.coordinates, U.username, A.sent_at, A.id FROM
-    additions A, users U  WHERE A.creator_id=U.id AND A.visible=1 AND A.genre LIKE :query ORDER BY A.sent_at DESC"""
+    additions A, users U  WHERE A.creator_id=U.id AND A.visible=1 AND A.genre ILIKE :query ORDER BY
+    A.sent_at DESC """
+    return db.session.execute(sql, {"query":"%"+query+"%"}).fetchall()
+
+def get_result_borough(query):
+    sql = """SELECT A.borough, A.genre, A.coordinates, U.username, A.sent_at, A.id FROM
+    additions A, users U  WHERE A.creator_id=U.id AND A.visible=1 AND A.borough ILIKE :query ORDER BY
+    A.sent_at DESC """
+    return db.session.execute(sql, {"query":"%"+query+"%"}).fetchall()
+    
+def get_result_user(query):
+    sql = """SELECT A.borough, A.genre, A.coordinates, U.username, A.sent_at, A.id FROM
+    additions A, users U  WHERE A.creator_id=U.id AND A.visible=1 AND U.username ILIKE :query ORDER 
+    BY A.sent_at DESC """
     return db.session.execute(sql, {"query":"%"+query+"%"}).fetchall()
 

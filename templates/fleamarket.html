@@ -1,9 +1,12 @@
 {% extends "layout.html" %}
 {% block content %}
+{% if session.user_id %}
 <h2>Kirpputori</h>
 <p>
 <a href="/for_sale">Myydään</a> <a href="/for_purchase">Ostetaan</a>
 <p>
 <a href="/">Palaa takaisin</a>
-
+{% else %}
+Et ole kirjautunut sisään. <a href="/login">Kirjaudu sisään</a>
+{% endif %}
 {% endblock %}

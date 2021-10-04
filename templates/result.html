@@ -1,5 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
+{% if session.user_id %}
+
 <h2>Hakusi tulokset: </h2>
 {% for result in list %}
 <b>Kaupunginosa:</b> {{ result[0] }}
@@ -17,5 +19,7 @@
 <a href="/">Palaa takaisin</a>
 <p>
 {% endfor %}
+{% else %}
+Et ole kirjautunut sisään. <a href="/login">Kirjaudu sisään</a>
+{% endif %}
 {% endblock %}
-

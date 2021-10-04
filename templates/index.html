@@ -8,9 +8,17 @@
 <ul>
 <li><a href="/new">Lisää uusi marja- tai sienihavainto!</a>
 <li><a href="/remove_addition">Poista lisäyksesi</a>
-<form action="/result" method="GET">
-Hakusana: <input type="text" name="query">
-<br>
+
+<form action="/result_genre" method="GET">
+Hae lajin lisäykset: <input type="text" name="query">
+<input type="submit" value="Lähetä">
+</form>
+<form action="/result_borough" method="GET">
+Hae kaupunginosan lisäykset: <input type="text" name="query">
+<input type="submit" value="Lähetä">
+</form>
+<form action="/result_user" method="GET">
+Hae käyttäjän mukaan: <input type="text" name="query">
 <input type="submit" value="Lähetä">
 </form>
 
@@ -20,9 +28,6 @@ Hakusana: <input type="text" name="query">
 <ul>
 <li><a href="/remove">Poista lisäys</a>
 </ul>
-{% endif %}
-{% else %}
-Et ole kirjautunut sisään. <a href="/login">Kirjaudu sisään</a>
 {% endif %}
 <p>
 <a href="/fleamarket">Kirpputori sienestys- ja marjastustavaroille</a>
@@ -42,4 +47,15 @@ Et ole kirjautunut sisään. <a href="/login">Kirjaudu sisään</a>
 <a href="/show_review/{{ addition[5] }}"> Arvostelut </a>
 <hr>
 {% endfor %}
+{% else %}
+<i>Oletko jo valmis paljastamaan suvussa kulkeneen täydellisen puolukkapaikan sijainnin ja jakamaan onnesi muiden kanssa?
+<p>
+Löysitkö sattumalta kasapäin kantarelleja ja et halua että ne menevät hukkaan?
+<p>
+Jäikö luottomustikkapaikkasi raidejokerin työmaan alle ja tarvitset marjoja piirakkaan?</i>
+<p>
+Liity kaltaistesi joukkoon ja tule Marjapaikkaan! Parhaat marja- ja sienestyspaikat sekä kirpputorin marja- ja sienestystarvikkeille löydät kirjautumalla sisään. <b>Tervetuloa mukaan!</b>
+<p>
+<a href="/login">Kirjaudu sisään</a>
+{% endif %}
 {% endblock %}
