@@ -27,7 +27,7 @@ def remove_purchase(purchase_id, user_id):
     db.session.execute(sql, {"id":purchase_id, "user_id":user_id})
     db.session.commit()
 
-def remove_purchase_admin(addition_id):
+def remove_purchase_admin(purchase_id):
     sql = "UPDATE purchases SET visible=0 WHERE id=:id"
     db.session.execute(sql, {"id":purchase_id})
     db.session.commit()

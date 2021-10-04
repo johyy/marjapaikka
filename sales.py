@@ -6,7 +6,7 @@ def get_sales():
     sales S, users U WHERE S.user_id=U.id AND S.visible=1 ORDER BY S.sent_at DESC"""
     result = db.session.execute(sql)
     return result.fetchall()
-    
+
 def send_sales_ad(comment, borough):
     creator_id = users.user_id()
     if creator_id == 0:
@@ -27,7 +27,7 @@ def remove_sale(sale_id, user_id):
     db.session.execute(sql, {"id":sale_id, "user_id":user_id})
     db.session.commit()
 
-def remove_sale_admin(addition_id):
+def remove_sale_admin(sale_id):
     sql = "UPDATE sales SET visible=0 WHERE id=:id"
     db.session.execute(sql, {"id":sale_id})
     db.session.commit()

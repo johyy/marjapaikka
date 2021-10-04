@@ -1,6 +1,5 @@
 from flask import render_template, request, redirect
 from app import app
-from db import db
 import users
 import additions
 import reviews
@@ -24,7 +23,7 @@ def fleamarket():
 def for_sale():
     list = sales.get_sales()
     return render_template("sales.html", sales=list)
-    
+
 @app.route("/new_sale")
 def new_sale():
     return render_template("new_sale.html")
@@ -57,7 +56,7 @@ def remove_sale():
 def for_purchase():
     list = purchases.get_purchases()
     return render_template("purchases.html", purchases=list)
-    
+
 @app.route("/new_purchase")
 def new_purchase():
     return render_template("new_purchase.html")
@@ -185,7 +184,7 @@ def remove_addition():
         addition = request.form["addition"]
         additions.remove_addition(addition, users.user_id())
     return redirect("/")
-    
+
 @app.route("/remove_review", methods=["get", "post"])
 def remove_review():
     users.require_role(1)
@@ -199,9 +198,8 @@ def remove_review():
         if "review" in request.form:
             review = request.form["review"]
             reviews.remove_review(id)
-            
     return redirect("/")
-    
+
 @app.route("/result_genre")
 def result_genre():
     query = request.args["query"]

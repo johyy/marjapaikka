@@ -1,5 +1,5 @@
 from db import db
-import users 
+import users
 import reviews
 
 def get_list():
@@ -17,12 +17,12 @@ def send(borough, genre, coordinates):
     creator_id = users.user_id()
     if creator_id == 0:
         return False
-    sql = """INSERT INTO additions (borough, genre, coordinates, creator_id, sent_at, visible)
-    VALUES (:borough, :genre, :coordinates, :creator_id, NOW(), 1)"""
+    sql = """INSERT INTO additions (borough, genre, coordinates, creator_id,
+    sent_at, visible) VALUES (:borough, :genre, :coordinates, :creator_id, NOW(), 1)"""
     db.session.execute(sql, {"borough":borough, "genre":genre, "coordinates":coordinates, "creator_id":creator_id})
     db.session.commit()
     return True
-	
+
 def get_my_additions(user_id):
     sql = """SELECT id, borough, genre, coordinates FROM additions WHERE
     creator_id=:user_id AND visible=1 ORDER BY id"""
@@ -40,19 +40,18 @@ def remove_addition_admin(addition_id):
 
 def get_result_genre(query):
     sql = """SELECT A.borough, A.genre, A.coordinates, U.username, A.sent_at, A.id FROM
-    additions A, users U  WHERE A.creator_id=U.id AND A.visible=1 AND A.genre ILIKE :query ORDER BY
-    A.sent_at DESC """
+    additions A, users U  WHERE A.creator_id=U.id AND A.visible=1 AND A.genre ILIKE :query 
+    ORDER BY A.sent_at DESC"""
     return db.session.execute(sql, {"query":"%"+query+"%"}).fetchall()
 
 def get_result_borough(query):
     sql = """SELECT A.borough, A.genre, A.coordinates, U.username, A.sent_at, A.id FROM
-    additions A, users U  WHERE A.creator_id=U.id AND A.visible=1 AND A.borough ILIKE :query ORDER BY
-    A.sent_at DESC """
+    additions A, users U  WHERE A.creator_id=U.id AND A.visible=1 AND A.borough ILIKE :query
+    ORDER BY A.sent_at DESC"""
     return db.session.execute(sql, {"query":"%"+query+"%"}).fetchall()
     
 def get_result_user(query):
     sql = """SELECT A.borough, A.genre, A.coordinates, U.username, A.sent_at, A.id FROM
-    additions A, users U  WHERE A.creator_id=U.id AND A.visible=1 AND U.username ILIKE :query ORDER 
-    BY A.sent_at DESC """
+    additions A, users U  WHERE A.creator_id=U.id AND A.visible=1 AND U.username ILIKE :query ORDER
+    BY A.sent_at DESC"""
     return db.session.execute(sql, {"query":"%"+query+"%"}).fetchall()
-
