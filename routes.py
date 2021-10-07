@@ -51,6 +51,20 @@ def remove_sale():
         sale = request.form["sale"]
         sales.remove_sale(sale, users.user_id())
     return redirect("/for_sale")
+    
+@app.route("/remove_sale_admin", methods=["get", "post"])
+def remove_sale_admin():
+    if request.method == "GET":
+        all_sales = sales.get_sales()
+        return render_template("remove_sale.html", list=all_sales)
+
+    if request.method == "POST":
+        users.check_csrf()
+
+    if "sale" in request.form:
+        sale = request.form["sale"]
+        sales.remove_sale_admin(sale)
+    return redirect("/for_sale")
 
 @app.route("/for_purchase")
 def for_purchase():
@@ -83,6 +97,20 @@ def remove_purchase():
     if "purchase" in request.form:
         purchase = request.form["purchase"]
         purchases.remove_purchase(purchase, users.user_id())
+    return redirect("/for_purchase")
+    
+@app.route("/remove_purchase_admin", methods=["get", "post"])
+def remove_purchase_admin():
+    if request.method == "GET":
+        all_purchases = purchases.get_purchases()
+        return render_template("remove_purchase.html", list=all_purchases)
+
+    if request.method == "POST":
+        users.check_csrf()
+
+    if "purchase" in request.form:
+        purchase = request.form["purchase"]
+        purchases.remove_purchase_admin(purchase)
     return redirect("/for_purchase")
 
 @app.route("/send", methods=["POST"])
@@ -120,6 +148,22 @@ def review():
     reviews.add_review(addition_id, stars, comment, users.user_id())
 
     return redirect("/show_review/"+str(addition_id))
+
+@app.route("/remove_review", methods=["get", "post"])
+def remove_review():
+    users.require_role(1)
+
+    if request.method == "GET":
+        all_reviews = reviews.get_list()
+        return render_template("remove_review.html", list=all_reviews)
+
+    if request.method == "POST":
+        users.check_csrf()
+        if "review" in request.form:
+            review = request.form["review"]
+            reviews.remove_review(id)
+    return redirect("/")
+
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -183,21 +227,6 @@ def remove_addition():
     if "addition" in request.form:
         addition = request.form["addition"]
         additions.remove_addition(addition, users.user_id())
-    return redirect("/")
-
-@app.route("/remove_review", methods=["get", "post"])
-def remove_review():
-    users.require_role(1)
-
-    if request.method == "GET":
-        all_reviews = reviews.get_list()
-        return render_template("remove_review.html", list=all_reviews)
-
-    if request.method == "POST":
-        users.check_csrf()
-        if "review" in request.form:
-            review = request.form["review"]
-            reviews.remove_review(id)
     return redirect("/")
 
 @app.route("/result_genre")

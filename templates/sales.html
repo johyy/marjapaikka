@@ -1,21 +1,20 @@
 {% extends "layout.html" %}
 {% block content %}
 {% if session.user_id %}
-<p>
-<b>{{ session.user_name }}</b>. <a href="/logout">Kirjaudu ulos</a>
-<p>
+<font size="4"><b>{{ session.user_name }}</b>. <a href="/logout">Kirjaudu ulos</a></font>
 <ul>
+<font size="4.5">
 <li><a href="/new_sale">Lisää myynti-ilmoitus</a>
 <li><a href="/remove_sale">Poista ilmoituksesi</a>
 </ul>
 {% if session.user_role == 1 %}
 <h3>Adiminin toiminnot:</h3>
 <ul>
-<li><a href="/remove">Poista ilmoitus</a>
+<li><a href="/remove_sale_admin">Poista ilmoitus</a>
 </ul>
 {% endif %}
 <p>
-<h2>Myydään:</h2>
+<h2><font size=6>Myydään:</h2></font>
 {% for sale in sales %}
 <b>Ilmoitus:</b> {{ sale[0] }}
 <p>
@@ -27,10 +26,11 @@
 <p> 
 <hr>
 {% endfor %}
-<a href="/fleamarket">Palaa takaisin</a>
-<p>
-<a href="/">Etusivu</a>
+</font>
+<font size="4">
+<a href="/">Palaa takaisin</a>
 {% else %}
-Et ole kirjautunut sisään. <a href="/login">Kirjaudu sisään</a>
+<font size="4">Et ole kirjautunut sisään. <a href="/login">Kirjaudu sisään</a></font>
 {% endif %}
+</font>
 {% endblock %}

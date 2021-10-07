@@ -1,8 +1,8 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<h2>Rekisteröinti</h2>
-
+<h2><font size="6">Rekisteröinti</h2></font>
+<font size="5">
 <form action="/register" method="post">
 Tunnus: <br><input type="text" name="username" minlength="1" maxlength="20">
 <p>
@@ -12,8 +12,7 @@ Salasana uudestaan: <br><input type="password" name="password2">
 <p>
 <input type="submit" value="Luo tunnus">
 </form>
-
+</font>
 <p>
-<a href="/login">Palaa takaisin</a>
-
+<font size="4"><a href="/login">Palaa takaisin</a></font>
 {% endblock %}

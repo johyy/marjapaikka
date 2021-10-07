@@ -17,6 +17,6 @@ def get_list():
     return db.session.execute(sql).fetchall()
 
 def remove_review(addition_id):
-    sql = "UPDATE reviews SET visible=0 WHERE id=:id"
-    db.session.execute(sql, {"id":id})
+    sql = "UPDATE reviews SET visible=0 WHERE id=:addition_id"
+    db.session.execute(sql, {"addition_id":addition_id})
     db.session.commit()

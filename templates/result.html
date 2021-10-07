@@ -2,7 +2,8 @@
 {% block content %}
 {% if session.user_id %}
 
-<h2>Hakusi tulokset: </h2>
+<h2><font size="5">Hakusi tulokset: </h2></font>
+<font size="4">
 {% for result in list %}
 <b>Kaupunginosa:</b> {{ result[0] }}
 <p>
@@ -16,10 +17,11 @@
 <p> 
 <a href="/show_review/{{ result[5] }}"> Arvostelut </a>
 <hr>
-<a href="/">Palaa takaisin</a>
+</font>
+<font size ="4"><a href="/">Palaa takaisin</a></font>
 <p>
 {% endfor %}
 {% else %}
-Et ole kirjautunut sisään. <a href="/login">Kirjaudu sisään</a>
+<font size="4">Et ole kirjautunut sisään. <a href="/login">Kirjaudu sisään</a></font>
 {% endif %}
 {% endblock %}

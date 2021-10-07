@@ -2,17 +2,19 @@
 {% block content %}
 {% if session.user_id %}
 
-<h3>Kerro kuvaavasti tuotteesta, jota olet myymässä. Älä unohda yhteystietoja!</h3>
+<h3><font size="6">Kerro kuvaavasti tuotteesta, jota olet myymässä. Älä unohda yhteystietoja!</h3></font>
 <form action="/send_sales_ad" method="post">
-Ilmoitus: <br>
-<textarea name="comment" rows="1" cols="40"></textarea>
+<font size="5">Ilmoitus: <br>
+<textarea name="comment" rows="5" cols="40"></textarea>
 <br>
 Kaupunginosa: <br>
 <textarea name="borough" rows="1" cols="40"></textarea>
 <br>
 <input type="submit" value="Lähetä">
 </form>
+</font>
+<font size="4"><a href="/for_sale">Palaa takaisin</a></font>
 {% else %}
-Et ole kirjautunut sisään. <a href="/login">Kirjaudu sisään</a>
+<font size="4">Et ole kirjautunut sisään. <a href="/login">Kirjaudu sisään</a></font>
 {% endif %}
 {% endblock %}

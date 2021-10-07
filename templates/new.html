@@ -2,9 +2,9 @@
 {% block content %}
 {% if session.user_id %}
 
-<h3>Täytä jokainen kohta!</h3>
+<h3><font size="6">Täytä jokainen kohta!</h3></font>
 <form action="/send" method="post">
-Kaupunginosa: <br>
+<font size="5">Kaupunginosa: <br>
 <textarea name="borough" rows="1" cols="40"></textarea>
 <br>
 Laji: <br>
@@ -15,7 +15,9 @@ Löytöpaikka tarkemmin: <br>
 <br>
 <input type="submit" value="Lähetä">
 </form>
+</font>
+<font size="4"><a href="/">Palaa takaisin</a></font>
 {% else %}
-Et ole kirjautunut sisään. <a href="/login">Kirjaudu sisään</a>
+<font size="4">Et ole kirjautunut sisään. <a href="/login">Kirjaudu sisään</a></font>
 {% endif %}
 {% endblock %}

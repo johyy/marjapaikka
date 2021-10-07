@@ -1,13 +1,21 @@
+h1 {
+    font-family: 'Courier New', monospace;
+}
+
 
 body {
     margin: auto;
     max-width: 45em;
     font-family: 'Helvetica', 'Arial', sans-serif;
-    background-color: #FFDDDD;
+    background-color: #000000;   
 }
 
-table {
-    width: 80%;
+body {
+    background-image: url("https://images.pexels.com/photos/4022090/pexels-photo-4022090.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=1000&w=1700")
+}
+
+a {
+    color: #FFFFFF;
 }
 
 td, th {
@@ -16,10 +24,24 @@ td, th {
     border-width: 1px;
 }
 
+nav li {
+    display: inline-block;
+    padding: 0 .5em;
+}
+
+nav ul {
+    padding: 0;
+}
+
+form {
+    ...
+    padding: .5em;
+}
+
 header {
-    background-color: #FFDDDD;
+    background-color: #FFFDDD;
     position: sticky;
     top: 0;
     
     z-index: 9999;
-}	
+}

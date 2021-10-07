@@ -1,27 +1,28 @@
 {% extends "layout.html" %}
 {% block content %}
-
 {% if session.user_id %}
-<p>
-<b>{{ session.user_name }}</b>. <a href="/logout">Kirjaudu ulos</a>
-<p>
+
+<font size="4"><b>{{ session.user_name }}</b>. <a href="/logout">Kirjaudu ulos</a></font>
+<br>
+<font size="6"><i><b>Kirpputori sienestys- ja marjastustavaroille:</i></b></font>
+<font size="5"><a href="/for_sale"><b>Myytävänä</a> <a href="/for_purchase"> Halutaan ostaa</b></a></font>
 <ul>
-<li><a href="/new">Lisää uusi marja- tai sienihavainto!</a>
-<li><a href="/remove_addition">Poista lisäyksesi</a>
-
-<form action="/result_genre" method="GET">
-Hae lajin lisäykset: <input type="text" name="query">
-<input type="submit" value="Lähetä">
-</form>
-<form action="/result_borough" method="GET">
-Hae kaupunginosan lisäykset: <input type="text" name="query">
-<input type="submit" value="Lähetä">
-</form>
-<form action="/result_user" method="GET">
-Hae käyttäjän mukaan: <input type="text" name="query">
-<input type="submit" value="Lähetä">
-</form>
-
+  <font size ="4">
+    <li><a href="/new">Lisää uusi sieni- tai marjapaikkahavainto!</a>
+    <li><a href="/remove_addition">Poista lisäyksesi</a>
+    <p>
+    <form action="/result_genre" method="GET">
+    <li>Hae lajin mukaan: <input type="text" name="query">
+    <input type="submit" value="Hae!">
+    </form>
+    <form action="/result_borough" method="GET">
+    <li>Hae kaupunginosan mukaan: <input type="text" name="query">
+    <input type="submit" value="Hae!">
+    </form>
+    <form action="/result_user" method="GET">
+    <li>Hae käyttäjän mukaan: <input type="text" name="query">
+    <input type="submit" value="Hae!">
+    </form>
 </ul>
 {% if session.user_role == 1 %}
 <h3>Adiminin toiminnot:</h3>
@@ -29,10 +30,9 @@ Hae käyttäjän mukaan: <input type="text" name="query">
 <li><a href="/remove">Poista lisäys</a>
 </ul>
 {% endif %}
-<p>
-<a href="/fleamarket">Kirpputori sienestys- ja marjastustavaroille</a>
-<h2>Käyttäjien lisäykset:</h2>
-
+</font>
+<font size="5"><h2>Käyttäjien lisäämät sieni-/marjapaikat:</h2></font>
+<font size="4">
 {% for addition in additions %}
 <b>Kaupunginosa:</b> {{ addition[0] }}
 <p>
@@ -47,7 +47,10 @@ Hae käyttäjän mukaan: <input type="text" name="query">
 <a href="/show_review/{{ addition[5] }}"> Arvostelut </a>
 <hr>
 {% endfor %}
+</font>
 {% else %}
+<font size="5">
+<p>
 <i>Oletko jo valmis paljastamaan suvussa kulkeneen täydellisen puolukkapaikan sijainnin ja jakamaan onnesi muiden kanssa?
 <p>
 Löysitkö sattumalta kasapäin kantarelleja ja et halua että ne menevät hukkaan?
@@ -57,5 +60,6 @@ Jäikö luottomustikkapaikkasi raidejokerin työmaan alle ja tarvitset marjoja p
 Liity kaltaistesi joukkoon ja tule Marjapaikkaan! Parhaat marja- ja sienestyspaikat sekä kirpputorin marja- ja sienestystarvikkeille löydät kirjautumalla sisään. <b>Tervetuloa mukaan!</b>
 <p>
 <a href="/login">Kirjaudu sisään</a>
+</font>
 {% endif %}
 {% endblock %}
