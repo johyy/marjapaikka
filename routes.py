@@ -54,7 +54,7 @@ def remove_sale():
 def remove_sale_admin():
     if request.method == "GET":
         all_sales = sales.get_sales()
-        return render_template("remove_sale.html", list=all_sales)
+        return render_template("remove_sale_admin.html", list=all_sales)
     if request.method == "POST":
         users.check_csrf()
     if "sale" in request.form:
@@ -97,7 +97,7 @@ def remove_purchase():
 def remove_purchase_admin():
     if request.method == "GET":
         all_purchases = purchases.get_purchases()
-        return render_template("remove_purchase.html", list=all_purchases)
+        return render_template("remove_purchase_admin.html", list=all_purchases)
     if request.method == "POST":
         users.check_csrf()
     if "purchase" in request.form:
@@ -139,14 +139,16 @@ def review():
 @app.route("/remove_review", methods=["get", "post"])
 def remove_review():
     users.require_role(1)
+    addition_id = request.form["addition_id"]
+    print(addition_id)
     if request.method == "GET":
-        all_reviews = reviews.get_list()
+        all_reviews = reviews.get_reviews(addition_id)
         return render_template("remove_review.html", list=all_reviews)
     if request.method == "POST":
         users.check_csrf()
         if "review" in request.form:
             review = request.form["review"]
-            reviews.remove_review(id)
+            reviews.remove_review(review)
     return redirect("/")
 
 @app.route("/login", methods=["GET", "POST"])
@@ -183,17 +185,17 @@ def register():
             return render_template("error.html", message="Rekisteröinti ei onnistunut")
         return redirect("/")
 
-@app.route("/remove", methods=["get", "post"])
+@app.route("/remove_addition_admin", methods=["get", "post"])
 def remove():
     users.require_role(1)
     if request.method == "GET":
         all_additions = additions.get_list()
-        return render_template("remove_addition.html", list=all_additions)
+        return render_template("remove_addition_admin.html", list=all_additions)
     if request.method == "POST":
         users.check_csrf()
         if "addition" in request.form:
-            addition_admin = request.form["addition"]
-            additions.remove_addition_admin(addition_admin)
+            addition = request.form["addition"]
+            additions.remove_addition_admin(addition)
     return redirect("/")
 
 @app.route("/remove_addition", methods=["get", "post"])

@@ -14,19 +14,19 @@
     <li>Hae lajin mukaan: <input type="text" name="query">
     <input type="submit" value="Hae!">
     </form>
-    <form action="/result_borough" method="GET">
-    <li>Hae kaupunginosan mukaan: <input type="text" name="query">
-    <input type="submit" value="Hae!">
-    </form>
     <form action="/result_user" method="GET">
     <li>Hae käyttäjän mukaan: <input type="text" name="query">
+    <input type="submit" value="Hae!">
+    </form>
+    <form action="/result_borough" method="GET">
+    <li>Hae kaupunginosan mukaan: <input type="text" name="query">
     <input type="submit" value="Hae!">
     </form>
 </ul>
 {% if session.user_role == 1 %}
 <h3>Adiminin toiminnot:</h3>
 <ul>
-<li><a href="/remove">Poista lisäys</a>
+<li><a href="/remove_addition_admin">Poista lisäys</a>
 </ul>
 {% endif %}
 </font>
@@ -45,6 +45,7 @@
 <a href="/show_review/{{ addition[5] }}"> Arvostelut </a>
 <hr>
 {% endfor %}
+<a href="/">Palaa sivun alkuun</a>
 </font>
 {% else %}
 <font size="5">

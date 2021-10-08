@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block content %}
+{% if session.user_id %}
+<h2><font size="6">Poista myynti-ilmoitus</h2></font>
+<form action="/remove_sale_admin" method="post">
+<font size="5">Minkä ilmoituksen haluat poistaa?
+<br>
+{% for sale in list %}
+<input type="radio" name="sale" value="{{ sale.id }}"> {{ sale.comment }} <br>
+{% endfor %}
+<p>
+<input type="submit" value="Poista">
+<input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
+</form>
+</font>
+<font size="4"><a href="/for_sale">Palaa takaisin</a></font>
+{% else %}
+<font size="4">Et ole kirjautunut sisään. <a href="/login">Kirjaudu sisään</a></font>
+{% endif %}
+{% endblock %}
