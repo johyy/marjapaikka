@@ -43,24 +43,20 @@ def remove_sale():
     if request.method == "GET":
         my_sales = sales.get_my_sales(users.user_id())
         return render_template("remove_sale.html", list=my_sales)
-
     if request.method == "POST":
         users.check_csrf()
-
     if "sale" in request.form:
         sale = request.form["sale"]
         sales.remove_sale(sale, users.user_id())
     return redirect("/for_sale")
-    
+
 @app.route("/remove_sale_admin", methods=["get", "post"])
 def remove_sale_admin():
     if request.method == "GET":
         all_sales = sales.get_sales()
         return render_template("remove_sale.html", list=all_sales)
-
     if request.method == "POST":
         users.check_csrf()
-
     if "sale" in request.form:
         sale = request.form["sale"]
         sales.remove_sale_admin(sale)
@@ -90,24 +86,20 @@ def remove_purchase():
     if request.method == "GET":
         my_purchases = purchases.get_my_purchases(users.user_id())
         return render_template("remove_purchase.html", list=my_purchases)
-
     if request.method == "POST":
         users.check_csrf()
-
     if "purchase" in request.form:
         purchase = request.form["purchase"]
         purchases.remove_purchase(purchase, users.user_id())
     return redirect("/for_purchase")
-    
+
 @app.route("/remove_purchase_admin", methods=["get", "post"])
 def remove_purchase_admin():
     if request.method == "GET":
         all_purchases = purchases.get_purchases()
         return render_template("remove_purchase.html", list=all_purchases)
-
     if request.method == "POST":
         users.check_csrf()
-
     if "purchase" in request.form:
         purchase = request.form["purchase"]
         purchases.remove_purchase_admin(purchase)
@@ -128,42 +120,34 @@ def send():
 def show_review(addition_id):
     info = additions.get_addition_info(addition_id)
     reviewslist = reviews.get_reviews(addition_id)
-
     return render_template("review.html", id=addition_id, borough=info[0], genre=info[1], creator=info[2], reviews=reviewslist)
 
 @app.route("/review", methods=["post"])
 def review():
     addition_id = request.form["addition_id"]
-
     stars = int(request.form["stars"])
     if stars < 1 or stars > 5:
         return render_template("error.html", message="Virheellinen tähtimäärä")
-
     comment = request.form["comment"]
     if len(comment) > 1000:
         return render_template("error.html", message="Kommentti on liian pitkä")
     if comment == "":
         comment = "-"
-
     reviews.add_review(addition_id, stars, comment, users.user_id())
-
     return redirect("/show_review/"+str(addition_id))
 
 @app.route("/remove_review", methods=["get", "post"])
 def remove_review():
     users.require_role(1)
-
     if request.method == "GET":
         all_reviews = reviews.get_list()
         return render_template("remove_review.html", list=all_reviews)
-
     if request.method == "POST":
         users.check_csrf()
         if "review" in request.form:
             review = request.form["review"]
             reviews.remove_review(id)
     return redirect("/")
-
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -202,17 +186,14 @@ def register():
 @app.route("/remove", methods=["get", "post"])
 def remove():
     users.require_role(1)
-
     if request.method == "GET":
         all_additions = additions.get_list()
         return render_template("remove_addition.html", list=all_additions)
-
     if request.method == "POST":
         users.check_csrf()
         if "addition" in request.form:
             addition_admin = request.form["addition"]
             additions.remove_addition_admin(addition_admin)
-
     return redirect("/")
 
 @app.route("/remove_addition", methods=["get", "post"])
@@ -220,10 +201,8 @@ def remove_addition():
     if request.method == "GET":
         my_additions = additions.get_my_additions(users.user_id())
         return render_template("remove_addition.html", list=my_additions)
-
     if request.method == "POST":
         users.check_csrf()
-
     if "addition" in request.form:
         addition = request.form["addition"]
         additions.remove_addition(addition, users.user_id())

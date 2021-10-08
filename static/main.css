@@ -2,7 +2,6 @@ h1 {
     font-family: 'Courier New', monospace;
 }
 
-
 body {
     margin: auto;
     max-width: 45em;
@@ -44,4 +43,12 @@ header {
     top: 0;
     
     z-index: 9999;
+}
+
+.right {
+  position: absolute;
+  top: 15px;
+  right: 0px;
+  width: 900px;
+  padding: 0px;
 }

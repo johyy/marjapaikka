@@ -1,11 +1,10 @@
 {% extends "layout.html" %}
 {% block content %}
 {% if session.user_id %}
-
-<font size="4"><b>{{ session.user_name }}</b>. <a href="/logout">Kirjaudu ulos</a></font>
-<br>
-<font size="6"><i><b>Kirpputori sienestys- ja marjastustavaroille:</i></b></font>
-<font size="5"><a href="/for_sale"><b>Myytävänä</a> <a href="/for_purchase"> Halutaan ostaa</b></a></font>
+<center><font size="6"><font color="d7cdfc"><b>Kirpputori sienestys- ja marjastustavaroille:</b></font></center>
+<center><font size="5"><a href="/for_sale"><b>Myytävänä</a> <a href="/for_purchase"> Halutaan ostaa</b></a></font></center>
+<p>
+<center><font size="6"><font color="f1aae8"><b>Käyttäjien lisäämät sieni- ja marjapaikat:</b></font></center>
 <ul>
   <font size ="4">
     <li><a href="/new">Lisää uusi sieni- tai marjapaikkahavainto!</a>
@@ -31,7 +30,6 @@
 </ul>
 {% endif %}
 </font>
-<font size="5"><h2>Käyttäjien lisäämät sieni-/marjapaikat:</h2></font>
 <font size="4">
 {% for addition in additions %}
 <b>Kaupunginosa:</b> {{ addition[0] }}
@@ -50,8 +48,8 @@
 </font>
 {% else %}
 <font size="5">
-<p>
-<i>Oletko jo valmis paljastamaan suvussa kulkeneen täydellisen puolukkapaikan sijainnin ja jakamaan onnesi muiden kanssa?
+<p><center>
+<i>Oletko viimein valmis paljastamaan salaisen puolukkapaikkasi sijainnin ja jakamaan onnesi muiden kanssa?
 <p>
 Löysitkö sattumalta kasapäin kantarelleja ja et halua että ne menevät hukkaan?
 <p>
@@ -60,6 +58,7 @@ Jäikö luottomustikkapaikkasi raidejokerin työmaan alle ja tarvitset marjoja p
 Liity kaltaistesi joukkoon ja tule Marjapaikkaan! Parhaat marja- ja sienestyspaikat sekä kirpputorin marja- ja sienestystarvikkeille löydät kirjautumalla sisään. <b>Tervetuloa mukaan!</b>
 <p>
 <a href="/login">Kirjaudu sisään</a>
+</center>
 </font>
 {% endif %}
 {% endblock %}

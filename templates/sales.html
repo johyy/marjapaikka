@@ -1,9 +1,9 @@
 {% extends "layout.html" %}
 {% block content %}
 {% if session.user_id %}
-<font size="4"><b>{{ session.user_name }}</b>. <a href="/logout">Kirjaudu ulos</a></font>
+<center><font size=6><font color="d7cdfc"><b>Myydään:</center></font></b>
+<font size="4">
 <ul>
-<font size="4.5">
 <li><a href="/new_sale">Lisää myynti-ilmoitus</a>
 <li><a href="/remove_sale">Poista ilmoituksesi</a>
 </ul>
@@ -13,8 +13,6 @@
 <li><a href="/remove_sale_admin">Poista ilmoitus</a>
 </ul>
 {% endif %}
-<p>
-<h2><font size=6>Myydään:</h2></font>
 {% for sale in sales %}
 <b>Ilmoitus:</b> {{ sale[0] }}
 <p>
