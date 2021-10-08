@@ -17,11 +17,12 @@
 <p> 
 <a href="/show_review/{{ result[5] }}"> Arvostelut </a>
 <hr>
-</font>
-<font size ="4"><a href="/">Palaa takaisin</a></font>
-<p>
 {% endfor %}
+</font>
 {% else %}
 <font size="4">Et ole kirjautunut sisään. <a href="/login">Kirjaudu sisään</a></font>
 {% endif %}
+<hr>
+<font size ="4"><a href="/">Palaa takaisin</a></font>
+<p>
 {% endblock %}
