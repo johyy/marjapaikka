@@ -136,19 +136,11 @@ def review():
     reviews.add_review(addition_id, stars, comment, users.user_id())
     return redirect("/show_review/"+str(addition_id))
 
-@app.route("/remove_review", methods=["get", "post"])
-def remove_review():
+@app.route("/remove_review/<int:review_id>")
+def remove_review(review_id):
+    print("jeeee")
     users.require_role(1)
-    addition_id = request.form["addition_id"]
-    print(addition_id)
-    if request.method == "GET":
-        all_reviews = reviews.get_reviews(addition_id)
-        return render_template("remove_review.html", list=all_reviews)
-    if request.method == "POST":
-        users.check_csrf()
-        if "review" in request.form:
-            review = request.form["review"]
-            reviews.remove_review(review)
+    reviews.remove_review(review_id)
     return redirect("/")
 
 @app.route("/login", methods=["GET", "POST"])

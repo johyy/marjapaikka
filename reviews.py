@@ -1,8 +1,8 @@
 from db import db
 
 def get_reviews(addition_id):
-    sql = """SELECT u.username, r.stars, r.comment, r.sent_at FROM reviews r, users u
-    WHERE r.user_id=u.id AND r.addition_id=:addition_id ORDER BY r.sent_at DESC"""
+    sql = """SELECT u.username, r.stars, r.comment, r.sent_at, r.id FROM reviews r, users u
+    WHERE r.user_id=u.id AND r.addition_id=:addition_id AND r.visible=1 ORDER BY r.sent_at DESC"""
     return db.session.execute(sql, {"addition_id": addition_id}).fetchall()
 
 def add_review(addition_id, stars, comment, user_id,):
@@ -16,7 +16,7 @@ def get_list():
     additions a WHERE r.user_id=u.id"""
     return db.session.execute(sql).fetchall()
 
-def remove_review(addition_id):
-    sql = "UPDATE reviews SET visible=0 WHERE id=:addition_id"
-    db.session.execute(sql, {"addition_id":addition_id})
+def remove_review(review_id):
+    sql = "UPDATE reviews SET visible=0 WHERE id=:review_id"
+    db.session.execute(sql, {"review_id":review_id})
     db.session.commit()

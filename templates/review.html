@@ -10,7 +10,7 @@
 <font size="4">
 <ul>
 {% for entry in reviews %}
-<li>{{ entry[3].strftime("%d.%m.%Y") }}: "{{ entry[2] }}" ({{ (entry[1]*"★") }}) -{{ entry[0] }} {% if session.user_role == 1 %}<form action="/remove_review"><input type="submit" value="Poista arvio"/>{% endif %}
+<li>{{ entry[3].strftime("%d.%m.%Y") }}: "{{ entry[2] }}" ({{ (entry[1]*"★") }}) -{{ entry[0] }} {% if session.user_role == 1 %}<a href="/remove_review/{{ entry [4] }}">Poista arvio</a>{% endif %}
 {% endfor %}
 </ul>
 </font>
@@ -34,6 +34,7 @@ Kommentti:<br>
 <input type="hidden" name="csrf_token" value="{{ session.csrf_token }}">
 </form>
 </font>
+<br>
 <font size="4"><a href="/">Palaa takaisin</a></font>
 {% else %}
 <font size="4">Et ole kirjautunut sisään. <a href="/login">Kirjaudu sisään</a></font>
