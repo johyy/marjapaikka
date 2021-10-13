@@ -7,6 +7,11 @@ def get_list():
     result = db.session.execute(sql)
     return result.fetchall()
 
+def get_amount():
+    sql = "SELECT COUNT(id) FROM additions WHERE visible=1"
+    result = db.session.execute(sql)
+    return result.fetchone()
+
 def get_addition_info(addition_id):
     sql = """SELECT a.borough, a,genre, u.username FROM additions a, users u WHERE
     a.id=:addition_id AND a.creator_id=u.id;"""

@@ -8,8 +8,9 @@ import purchases
 
 @app.route("/")
 def index():
+    amount = additions.get_amount()
     list = additions.get_list()
-    return render_template("index.html", additions=list)
+    return render_template("index.html", additions=list, amount=amount)
 
 @app.route("/new")
 def new():
@@ -32,11 +33,15 @@ def new_sale():
 def send_sales_ad():
     comment = request.form["comment"]
     borough = request.form["borough"]
+    if len(comment) > 500:
+        return render_template("error.html", message="Ilmoitus on liian pitkä")
+    if len(borough) > 30:
+        return render_template("error.html", message="Noin pitkää kaupunginosan nimeä ei ole olemassa!")
     if comment == "" or borough == "":
         return render_template("new_sale.html")
     if sales.send_sales_ad(comment, borough):
         return redirect("/for_sale")
-    return render_template("error.html", message="Lisäys ei onnistunut")
+    return render_template("error.html", message="Ilmoituksen lisäys ei onnistunut")
 
 @app.route("/remove_sale", methods=["get", "post"])
 def remove_sale():
@@ -75,6 +80,10 @@ def new_purchase():
 def send_purchases_ad():
     comment = request.form["comment"]
     borough = request.form["borough"]
+    if len(comment) > 500:
+        return render_template("error.html", message="Ilmoitus on liian pitkä")
+    if len(borough) > 30:
+        return render_template("error.html", message="Noin pitkää kaupunginosan nimeä ei ole olemassa!")
     if comment == "" or borough == "":
         return render_template("new_purchase.html")
     if purchases.send_ad(comment, borough):
@@ -110,6 +119,12 @@ def send():
     borough = request.form["borough"]
     genre = request.form["genre"]
     coordinates = request.form["coordinates"]
+    if len(borough) > 30:
+        return render_template("error.html", message="Noin pitkää kaupunginosan nimeä ei ole olemassa!")
+    if len(genre) > 100:
+        return render_template("error.html", message="Vähennä lajien määrää!")
+    if len(coordinates) > 500:
+        return render_template("error.html", message="Lyhyempikin ohjeistus riittää.")
     if borough == "" or genre == "" or coordinates == "":
         return render_template("new.html")
     if additions.send(borough, genre, coordinates):
@@ -127,18 +142,17 @@ def review():
     addition_id = request.form["addition_id"]
     stars = int(request.form["stars"])
     if stars < 1 or stars > 5:
-        return render_template("error.html", message="Virheellinen tähtimäärä")
+        return render_template("error.html", message="Virheellinen tähtimäärä.")
     comment = request.form["comment"]
-    if len(comment) > 1000:
-        return render_template("error.html", message="Kommentti on liian pitkä")
+    if len(comment) > 500:
+        return render_template("error.html", message="Kommentti on liian pitkä.")
     if comment == "":
-        comment = "-"
+        return render_template("error.html", message="Et voi jättää tyhjää kommenttia!")
     reviews.add_review(addition_id, stars, comment, users.user_id())
     return redirect("/show_review/"+str(addition_id))
 
 @app.route("/remove_review/<int:review_id>")
 def remove_review(review_id):
-    print("jeeee")
     users.require_role(1)
     reviews.remove_review(review_id)
     return redirect("/")
@@ -151,7 +165,7 @@ def login():
         username = request.form["username"]
         password = request.form["password"]
         if not users.login(username, password):
-            return render_template("error.html", message="Väärä tunnus tai salasana")
+            return render_template("error.html", message="Väärä tunnus tai salasana!")
         return redirect("/")
 
 @app.route("/logout")
@@ -174,7 +188,7 @@ def register():
         if password1 == "":
             return render_template("error.html", message="Salasana on tyhjä")
         if not users.register(username, password1):
-            return render_template("error.html", message="Rekisteröinti ei onnistunut")
+            return render_template("error.html", message="Rekisteröinti ei onnistunut!")
         return redirect("/")
 
 @app.route("/remove_addition_admin", methods=["get", "post"])

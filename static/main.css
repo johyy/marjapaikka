@@ -47,8 +47,8 @@ header {
 
 .right {
   position: absolute;
-  top: 15px;
-  right: 0px;
+  top: -15px;
+  right: -400px;
   width: 900px;
   padding: 0px;
 }
