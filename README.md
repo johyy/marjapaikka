@@ -1,8 +1,8 @@
 # Marjapaikka
 
-Sovelluksen avulla voi löytää Helsingin parhaat marja- ja sienipaikat.
+<i>Sovellus on tehty Helsingin Yliopiston kurssilla "Tietokantasovellus".</i>
 
-Sovelluksen ominaisuuksia tulee olemaan:
+<b>Sovelluksen avulla voi löytää Helsingin parhaat marja- ja sienipaikat:</b>
 
 ● Käyttäjä voi kirjautua sisään ja ulos sekä luoda uuden tunnuksen.
 
@@ -10,17 +10,13 @@ Sovelluksen ominaisuuksia tulee olemaan:
 
 ● Käyttäjä näkee listauksena muiden käyttäjien lisäämät marja- ja sienipaikat, joista uusin lisäys on listalla ensimmäisenä.
 
-● Käyttäjä voi hakea marja- ja sienipaikkoja nimeämällä haluamansa sienen tai marjan, ja/tai rajaamalla hakualueen tiettyyn kaupunginosaan tai hakemalla tietyn käyttäjätunnuksen lisäämiä paikkoja.
+● Käyttäjä voi hakea marja- ja sienipaikkoja nimeämällä haluamansa sienen tai marjan, tai rajaamalla hakualueen tiettyyn kaupunginosaan tai hakemalla tietyn käyttäjätunnuksen lisäämiä paikkoja.
 
 ● Käyttäjä voi arvioida muiden lisäämiä marja- tai sienipaikkoja ja lukea muiden antamia arvosteluja.
 
 ● Käyttäjä voi poistaa lisäämänsä marja- tai sienipaikan.
 
-(● Käyttäjä voi osallistua kyselyyn,joka löytää muotonsa hieman myöhemmin)
-
-(● Käyttäjä voi katsella kyselyn tuloksista koottua tulossivua)
-
-● Ylläpitäjä voi lisätä ja poistaa marja- ja sienipaikkoja.
+● Ylläpitäjä voi lisätä ja poistaa marja- ja sienipaikkoja (ylläpitäjän tunnus: admin, salasana: 123).
 
 ● Ylläpitäjä voi tarvittaessa poistaa käyttäjän antaman arvion.
 
@@ -30,10 +26,20 @@ Sovelluksen ominaisuuksia tulee olemaan:
   3. Paikan löytämiseen tarvittavat tiedot tai mahdolliset koordinaatit.
   4. Automaattisesti lisätään käyttäjätunnus sekä päivämäärä, jolloin lisäys on tehty.
 
+● Lisäksi sovelluksessa on kirpputori marjastus- ja sienestystarvikkeille, johon on mahdollista lisätä (sekä poistaa) osto- tai myynti-ilmoitus.
+
+● Ylläpitäjä voi poistaa minkä tahansa kirpputorin ilmoituksen.
+
 Sovellus testattavissa 
 <a href="http://marjapaikka.herokuapp.com">Herokussa</a>.
 
-Tilanne 26.9.:
+<b>Tilanne 9.10.:</b>
+
+● Sovellus toimii halutusti!
+
+● Teen muutoksia sovellukseen vertaisarvionnin, palautteen ja ehdotusten mukaan.
+
+<b>Tilanne 26.9.:</b>
 
 ● Käyttäjä voi kirjautua sisään ja ulos sekä luoda uuden tunnuksen.
 
@@ -45,7 +51,7 @@ Tilanne 26.9.:
 
 ● Käyttäjä voi lukea muiden antamia arvosteluja.
 
-● Ylläpitäjä voi poistaa lisäämänsä marja- tai sienipaikan. (Ylläpitäjän tunnus: admin, salasana: 123)
+● Ylläpitäjä voi poistaa lisäämänsä marja- tai sienipaikan. 
 
 ● Jokaisen marja- tai sienipaikan lisäykseen on mahdollista lisätä seuraavat tiedot:
   1. Kaupunginosa, josta paikka löytyy.
