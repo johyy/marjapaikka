@@ -10,9 +10,13 @@
 
 ● Käyttäjä näkee listauksena muiden käyttäjien lisäämät marja- ja sienipaikat, joista uusin lisäys on listalla ensimmäisenä.
 
+● Lisättyjen marja- ja sienipaikkojen määrä lukee listan alussa.
+
 ● Käyttäjä voi hakea marja- ja sienipaikkoja nimeämällä haluamansa sienen tai marjan, tai rajaamalla hakualueen tiettyyn kaupunginosaan tai hakemalla tietyn käyttäjätunnuksen lisäämiä paikkoja.
 
 ● Käyttäjä voi arvioida muiden lisäämiä marja- tai sienipaikkoja ja lukea muiden antamia arvosteluja.
+
+● Arvioinnin otsikossa näkee arvioiden keskiarvoisen tähtimäärän yhden tähden tarkkuudeella.
 
 ● Käyttäjä voi poistaa lisäämänsä marja- tai sienipaikan.
 
