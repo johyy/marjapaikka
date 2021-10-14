@@ -135,7 +135,22 @@ def send():
 def show_review(addition_id):
     info = additions.get_addition_info(addition_id)
     reviewslist = reviews.get_reviews(addition_id)
-    return render_template("review.html", id=addition_id, borough=info[0], genre=info[1], creator=info[2], reviews=reviewslist)
+    stars_avg = reviews.get_stars(addition_id)
+    print(stars_avg)
+    if None in stars_avg:
+        stars_avg = 0
+    elif 1 in stars_avg:
+        stars_avg = 1
+    elif 2 in stars_avg:
+        stars_avg = 2
+    elif 3 in stars_avg:
+        stars_avg = 3
+    elif 4 in stars_avg:
+        stars_avg = 4
+    else:
+        stars_avg = 5
+    print(stars_avg)
+    return render_template("review.html", id=addition_id, borough=info[0], genre=info[1], creator=info[2], reviews=reviewslist, stars_avg=stars_avg)
 
 @app.route("/review", methods=["post"])
 def review():

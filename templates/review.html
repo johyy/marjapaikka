@@ -2,7 +2,7 @@
 {% block content %}
 {% if session.user_id %}
 
-<center><font size="6"><font color="f1aae8"><b>Arvostelu paikalle {{ borough }} ({{ creator }})</b></font></center>
+<center><font size="6"><font color="f1aae8"><b>Arvostelu paikalle {{ borough }} ({{ creator }}) {{ stars_avg*"★" }}</b></font></center>
 <br>
 {% if reviews %}
 <font size="5">Käyttäjien antamat arviot:</font>

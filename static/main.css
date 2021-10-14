@@ -10,7 +10,7 @@ body {
 }
 
 body {
-    background-image: url("https://images.pexels.com/photos/4022090/pexels-photo-4022090.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=1000&w=1700")
+    background-image: url("https://images.pexels.com/photos/4022090/pexels-photo-4022090.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=1000&w=1400")
 }
 
 a {
@@ -48,7 +48,7 @@ header {
 .right {
   position: absolute;
   top: -15px;
-  right: -400px;
+  right: -380px;
   width: 900px;
   padding: 0px;
 }
