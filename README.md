@@ -37,6 +37,16 @@
 Sovellus testattavissa 
 <a href="http://marjapaikka.herokuapp.com">Herokussa</a>.
 
+<b>Tilanne 24.10.:</b>
+
+● Lisätty tekstin pituusrajoituksia teksikenttiin.
+
+● Lisätty etusivulle laskuri, joka laskee liäysten määrää.
+
+● Lisätty tähtien keskiarvon laskuri, joka näyttää keskimääräisen tähtimäärän arvostelusivulla (pyöristettynä yhden tähden tarkkuuteen).
+
+● Siirretty "Kirjaudu ulos"-linkkiä, jotta se ei ole suoraan otsikon päällä pienelläkään näytöllä.
+
 <b>Tilanne 9.10.:</b>
 
 ● Sovellus toimii halutusti!
