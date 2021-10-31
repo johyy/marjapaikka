@@ -41,7 +41,7 @@ Sovellus testattavissa
 
 ● Lisätty tekstin pituusrajoituksia teksikenttiin.
 
-● Lisätty etusivulle laskuri, joka laskee liäysten määrää.
+● Lisätty etusivulle laskuri, joka laskee lisäysten määrää.
 
 ● Lisätty tähtien keskiarvon laskuri, joka näyttää keskimääräisen tähtimäärän arvostelusivulla (pyöristettynä yhden tähden tarkkuuteen).
 
